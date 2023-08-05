@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Smart Scale App</string>
+
+    <string name="button_text">BMI Calculator</string>
+
+</resources>
