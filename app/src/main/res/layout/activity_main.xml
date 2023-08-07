@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/button2CaloriesCalc"
+        android:id="@+id/buttonCaloriesCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="240dp"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.512" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonFitnessplan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2CaloriesCalc"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCaloriesCalc"
         app:layout_constraintVertical_bias="0.193" />
 
 
