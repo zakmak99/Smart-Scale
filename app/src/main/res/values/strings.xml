@@ -2,5 +2,7 @@
     <string name="app_name">Smart Scale App</string>
 
     <string name="button_text">BMI Calculator</string>
-
+    <string name="menu_name">Navigation Drawer</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 </resources>
