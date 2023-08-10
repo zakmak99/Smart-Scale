@@ -1,4 +1,15 @@
 package com.example.smartscaleapp
 
-class FitnessplanGain {
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+
+class FitnessplanGain : AppCompatActivity(){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.fitness_gain)
+
+
+    }
 }
