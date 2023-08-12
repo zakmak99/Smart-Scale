@@ -14,21 +14,21 @@ class MainActivity : AppCompatActivity() {
 
         val bmiCalcButton = findViewById<Button>(R.id.buttonBMICalc)
         bmiCalcButton.setOnClickListener{
-            val Intent = Intent(this, BMICalculator::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, BMICalculator::class.java)
+            startActivity(intent)
         }
 
 
         val caloriesCalButton = findViewById<Button>(R.id.button2CaloriesCalc)
         caloriesCalButton.setOnClickListener{
-            val Intent = Intent(this, CaloriesCalculator::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, CaloriesCalculator::class.java)
+            startActivity(intent)
         }
 
         val fitnessPlanButton = findViewById<Button>(R.id.button3)
-            fitnessPlanButton.setOnClickListener{
-            val Intent = Intent(this, FitnessPlan::class.java)
-            startActivity(Intent)
+        fitnessPlanButton.setOnClickListener{
+            val intent = Intent(this, FitnessPlan::class.java)
+            startActivity(intent)
         }
 
     }

@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BMICalculator">
+    tools:context=".BMICalculator"
+    >
+
+
 
     <TextView
         android:id="@+id/textView"
@@ -13,6 +16,7 @@
         android:layout_marginTop="196dp"
         android:text="Enter Weight and Height"
         android:textSize="25sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +27,8 @@
         android:layout_height="wrap_content"
         android:text="Calculate"
         android:textSize="20sp"
+        style="?attr/materialButtonOutlinedStyle"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,10 +91,10 @@
         android:hint="Height"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toEndOf="@+id/textInputEditText"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <TextView
         android:id="@+id/textView6"
