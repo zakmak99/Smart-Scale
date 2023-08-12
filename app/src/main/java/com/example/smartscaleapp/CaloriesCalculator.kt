@@ -13,11 +13,13 @@ class CaloriesCalculator : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calories_calculator)
 
-        val nextButton = findViewById<Button>(R.id.buttonNext)
-        nextButton.setOnClickListener{
-            val intent = Intent(this, CaloriesCalcResult::class.java)
-            startActivity(intent)
+
+
+        val calculateButton = findViewById<Button>(R.id.buttonCalculate)
+        calculateButton.setOnClickListener {
+            calculateCalories()
         }
+
 
     }
 
@@ -31,21 +33,31 @@ class CaloriesCalculator : AppCompatActivity() {
 
         val dailyCalories = calculateCalories( sex, weight, height, age)
 
+        val intent = Intent(this, CaloriesCalcResult::class.java)
+        intent.putExtra("dailyCalories", dailyCalories)
+        startActivity(intent)
+
+
 
     }
 
-       private fun calculateCalories(sex: String, weightKg: Double, heightCm: Double, age: Int): Double{
+       private fun calculateCalories(sex: String, weightLb: Double, heightIn: Double, age: Int): Double{
 
        val bmr: Double
 
+
         if (sex == "male") {
-            bmr = 88.362 + (13.397 * weightKg) + (4.799 * heightCm) - (5.677 * age)
+            bmr = 66.5 + (6.23 * weightLb) + (12.7 * heightIn) - (6.8 * age)
         } else {
-            bmr = 447.593 + (9.247 * weightKg) + (3.098 * heightCm) - (4.330 * age)
+            bmr = 665 + (4.35 * weightLb) + (4.7 * heightIn) - (4.7 * age)
         }
 
 
-       return bmr
+
+
+           val activityLevel = 2.0
+
+       return bmr * activityLevel
     }
 
 
