@@ -11,11 +11,10 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="192dp"
         android:text="Smart Scale"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,11 +33,12 @@
         android:id="@+id/imageView"
         android:layout_width="155dp"
         android:layout_height="160dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
 
     <Button
         android:id="@+id/buttonCaloriesCalc"
@@ -52,21 +52,19 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonBMICalc"
-        app:layout_constraintVertical_bias="0.512" />
+        app:layout_constraintVertical_bias="0.552" />
 
     <Button
-        android:id="@+id/buttonFitnessplan"
+        android:id="@+id/buttonDietPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Fitness Plan"
+        android:text="Diet Plan"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCaloriesCalc"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintVertical_bias="0.238" />
 
     <androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
