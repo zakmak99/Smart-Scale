@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val dietPlanButton = findViewById<Button>(R.id.buttonDietPlan)
         dietPlanButton.setOnClickListener{
-            val Intent = Intent(this, FitnessPlan::class.java)
+            val Intent = Intent(this, DietPlan::class.java)
             startActivity(Intent)
         }
     }
