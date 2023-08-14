@@ -8,6 +8,9 @@ import android.widget.RadioButton
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import java.math.BigDecimal
+import java.math.RoundingMode
+
 
 class CaloriesCalculator : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +29,8 @@ class CaloriesCalculator : AppCompatActivity() {
 
     }
 
+
+
     private fun areFieldsValid():Boolean{
         val weightText = findViewById<EditText>(R.id.editTextNumberWeight).text.toString()
         val heightText = findViewById<EditText>(R.id.editTextNumberHeight).text.toString()
@@ -33,6 +38,8 @@ class CaloriesCalculator : AppCompatActivity() {
 
         return weightText.isNotBlank() && heightText.isNotBlank() && ageText.isNotBlank()
     }
+
+
 
     private fun calculateCalories(){
 
@@ -43,8 +50,13 @@ class CaloriesCalculator : AppCompatActivity() {
 
         val dailyCalories = calculateCalories( sex, weight, height, age)
 
+        val intent = Intent(this, CaloriesCalcResult::class.java)
+        intent.putExtra("dailyCalories", dailyCalories)
+        startActivity(intent)
 
     }
+
+
 
        private fun calculateCalories(sex: String, weightKg: Double, heightCm: Double, age: Int): Double{
 
@@ -57,7 +69,14 @@ class CaloriesCalculator : AppCompatActivity() {
         }
 
 
-       return bmr
+           val activityLevel = 1.0
+
+           val calculatedCalories = bmr * activityLevel
+
+           val roundedCalories = BigDecimal(calculatedCalories).setScale(2, RoundingMode.HALF_EVEN).toDouble()
+
+
+           return roundedCalories
     }
 
 
