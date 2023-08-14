@@ -15,5 +15,10 @@ class CaloriesCalcResult : AppCompatActivity() {
         setContentView(R.layout.activity_calories_calc_result)
 
 
+        val dailyCalories = intent.getDoubleExtra("dailyCalories", 0.0)
+
+        val resultTextView = findViewById<TextView>(R.id.textViewResult)
+        resultTextView.text = "Daily Calories: $dailyCalories"
+
     }
 }
