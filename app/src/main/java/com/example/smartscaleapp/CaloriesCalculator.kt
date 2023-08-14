@@ -7,20 +7,32 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class CaloriesCalculator : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calories_calculator)
 
-        val nextButton = findViewById<Button>(R.id.buttonNext)
-        nextButton.setOnClickListener{
-            val intent = Intent(this, CaloriesCalcResult::class.java)
-            startActivity(intent)
+        val calculateButton = findViewById<Button>(R.id.buttonCalculate)
+        calculateButton.setOnClickListener {
+            if(areFieldsValid()){
+                calculateCalories()
+            }
+            else{
+                Toast.makeText(this, "Please complete all the fields", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
 
+    private fun areFieldsValid():Boolean{
+        val weightText = findViewById<EditText>(R.id.editTextNumberWeight).text.toString()
+        val heightText = findViewById<EditText>(R.id.editTextNumberHeight).text.toString()
+        val ageText = findViewById<EditText>(R.id.editTextNumberAge).text.toString()
+
+        return weightText.isNotBlank() && heightText.isNotBlank() && ageText.isNotBlank()
+    }
 
     private fun calculateCalories(){
 
