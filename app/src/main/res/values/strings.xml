@@ -2,5 +2,18 @@
     <string name="app_name">Smart Scale App</string>
 
     <string name="button_text">BMI Calculator</string>
+    <string name="menu_name">Navigation Drawer</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="smart_scale">Smart Scale</string>
+    <string name="company_logo">company logo</string>
+    <string name="enter_weight_and_height">Enter Weight and Height</string>
+    <string name="enter_weight_kg">Enter Weight (kg)</string>
+    <string name="enter_height_cm">Enter Height (cm)</string>
+    <string name="calculate_bmi">Calculate BMI</string>
+    <string name="bmi_result">BMI Result:</string>
 
 </resources>

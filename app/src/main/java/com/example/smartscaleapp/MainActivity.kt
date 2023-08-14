@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val caloriesCalButton = findViewById<Button>(R.id.button2CaloriesCalc)
+        val caloriesCalButton = findViewById<Button>(R.id.buttonCaloriesCalc)
         caloriesCalButton.setOnClickListener{
             val intent = Intent(this, CaloriesCalculator::class.java)
             startActivity(intent)
@@ -31,5 +31,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        val dietPlanButton = findViewById<Button>(R.id.buttonDietPlan)
+        dietPlanButton.setOnClickListener{
+            val Intent = Intent(this, DietPlan::class.java)
+            startActivity(Intent)
+        }
     }
 }
