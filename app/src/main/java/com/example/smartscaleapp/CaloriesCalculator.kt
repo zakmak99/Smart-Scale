@@ -10,7 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import java.math.BigDecimal
 import java.math.RoundingMode
-
+import android.widget.RadioGroup
 
 class CaloriesCalculator : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,11 @@ class CaloriesCalculator : AppCompatActivity() {
         val weight = findViewById<EditText>(R.id.editTextNumberWeight).text.toString().toDoubleOrNull()?:0.0
         val height = findViewById<EditText>(R.id.editTextNumberHeight).text.toString().toDoubleOrNull()?:0.0
         val age = findViewById<EditText>(R.id.editTextNumberAge).text.toString().toIntOrNull()?:0
-        val sex = if (findViewById<RadioButton>(R.id.radioButtonMale).isChecked)"male" else "female"
+
+        val radioGroupGender = findViewById<RadioGroup>(R.id.radioGroupGender)
+        val selectedGenderId = radioGroupGender.checkedRadioButtonId
+        val sex = if (selectedGenderId == R.id.radioButtonMale) "male" else "female"
+
 
         val dailyCalories = calculateCalories( sex, weight, height, age)
 
