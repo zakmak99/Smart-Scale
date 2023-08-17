@@ -5,6 +5,7 @@
     <string name="menu_name">Navigation Drawer</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="menu_button">Navigation Menu</string>
 
     <string name="male">Male</string>
     <string name="female">Female</string>
