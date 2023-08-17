@@ -3,7 +3,13 @@ package com.example.smartscaleapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,5 +37,16 @@ class MainActivity : AppCompatActivity() {
             val Intent = Intent(this, DietPlan::class.java)
             startActivity(Intent)
         }
+
+        val myDrawer = findViewById<DrawerLayout>(R.id.my_drawer_layout)
+        findViewById<ImageButton>(R.id.navMenuButton)
+            .setOnClickListener {
+                myDrawer.openDrawer(GravityCompat.START)
+                while (myDrawer.isDrawerVisible(GravityCompat.START)){
+                myDrawer.bringToFront()
+                }
+            }
+        onMenuItemSelected()
     }
+
 }
