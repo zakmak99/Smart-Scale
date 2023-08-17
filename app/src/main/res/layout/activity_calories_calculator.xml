@@ -103,8 +103,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroupGender"
-        android:layout_width="195dp"
-        android:layout_height="81dp"
+        android:layout_width="280dp"
+        android:layout_height="113dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

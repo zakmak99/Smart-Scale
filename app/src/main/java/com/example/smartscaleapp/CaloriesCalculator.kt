@@ -62,14 +62,14 @@ class CaloriesCalculator : AppCompatActivity() {
 
 
 
-       private fun calculateCalories(sex: String, weightKg: Double, heightCm: Double, age: Int): Double{
+       private fun calculateCalories(sex: String, weightLb: Double, heightIn: Double, age: Int): Double{
 
        val bmr: Double
 
         if (sex == "male") {
-            bmr = 88.362 + (13.397 * weightKg) + (4.799 * heightCm) - (5.677 * age)
+            bmr = 88.362 + (13.397 * weightLb) + (4.799 * heightIn) - (5.677 * age)
         } else {
-            bmr = 447.593 + (9.247 * weightKg) + (3.098 * heightCm) - (4.330 * age)
+            bmr = 447.593 + (9.247 * weightLb) + (3.098 * heightIn) - (4.330 * age)
         }
 
 
