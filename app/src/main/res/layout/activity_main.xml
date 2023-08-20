@@ -57,7 +57,7 @@
         app:layout_constraintVertical_bias="0.916" />
 
     <Button
-        android:id="@+id/button2CaloriesCalc"
+        android:id="@+id/buttonCaloriesCalc"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="318dp"
         android:layout_height="55dp"
@@ -73,22 +73,17 @@
         app:layout_constraintVertical_bias="0.06" />
 
     <Button
-        android:id="@+id/button3"
-        style="?attr/materialButtonOutlinedStyle"
+        android:id="@+id/buttonDietPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Fitness Plan"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:text="DietPlan"
         android:textColor="#0FE1FF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2CaloriesCalc"
-        app:layout_constraintVertical_bias="0.0" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/buttonCaloriesCalc" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
