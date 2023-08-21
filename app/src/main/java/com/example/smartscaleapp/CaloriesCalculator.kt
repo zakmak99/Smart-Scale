@@ -11,11 +11,26 @@ import android.widget.Toast
 import java.math.BigDecimal
 import java.math.RoundingMode
 import android.widget.RadioGroup
+import android.widget.Spinner
+import android.widget.ArrayAdapter
+import android.widget.AdapterView
+
+
 
 class CaloriesCalculator : AppCompatActivity() {
+
+    private val activityLevelMultiplierMap = mapOf(
+        "Sedentary" to 1.2,
+        "Lightly Active" to 1.375,
+        "Moderately Active" to 1.55,
+        "Very Active" to 1.725,
+        "Extra Active" to 1.9
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calories_calculator)
+
+
 
         val calculateButton = findViewById<Button>(R.id.buttonCalculate)
         calculateButton.setOnClickListener {
@@ -26,6 +41,14 @@ class CaloriesCalculator : AppCompatActivity() {
                 Toast.makeText(this, "Please complete all the fields", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val activityLevelSpinner = findViewById<Spinner>(R.id.spinnerActivityLevel)
+        val activityLevels = resources.getStringArray(R.array.activity_levels)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, activityLevels)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        activityLevelSpinner.adapter = adapter
+
+
 
     }
 
@@ -54,8 +77,13 @@ class CaloriesCalculator : AppCompatActivity() {
 
         val dailyCalories = calculateCalories( sex, weight, height, age)
 
+        val activityLevelSpinner = findViewById<Spinner>(R.id.spinnerActivityLevel)
+        val selectedActivityLevel = activityLevelSpinner.selectedItem.toString().trim()
+
+
         val intent = Intent(this, CaloriesCalcResult::class.java)
         intent.putExtra("dailyCalories", dailyCalories)
+        intent.putExtra("activityLevel", selectedActivityLevel)
         startActivity(intent)
 
     }
@@ -72,10 +100,21 @@ class CaloriesCalculator : AppCompatActivity() {
             bmr = 447.593 + (9.247 * weightLb) + (3.098 * heightIn) - (4.330 * age)
         }
 
+//           val activityLevelMultiplierMap = mapOf(
+//               "Sedentary" to 1.2,
+//               "Lightly Active" to 1.375,
+//               "Moderately Active" to 1.55,
+//               "Very Active" to 1.725,
+//               "Extra Active" to 1.9
+//           )
 
-           val activityLevel = 1.0
+           val activityLevelSpinner = findViewById<Spinner>(R.id.spinnerActivityLevel)
+           val selectedActivityLevel = activityLevelSpinner.selectedItem.toString()
 
-           val calculatedCalories = bmr * activityLevel
+           val activityLevelMultiplier = activityLevelMultiplierMap[selectedActivityLevel] ?: 1.0
+
+
+           val calculatedCalories = bmr * activityLevelMultiplier
 
            val roundedCalories = BigDecimal(calculatedCalories).setScale(2, RoundingMode.HALF_EVEN).toDouble()
 
