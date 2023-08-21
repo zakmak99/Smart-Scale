@@ -7,12 +7,17 @@ import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintSet.Layout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+import com.google.android.material.appbar.CollapsingToolbarLayout
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,16 +42,22 @@ class MainActivity : AppCompatActivity() {
             val Intent = Intent(this, DietPlan::class.java)
             startActivity(Intent)
         }
-
-        val myDrawer = findViewById<DrawerLayout>(R.id.my_drawer_layout)
-        findViewById<ImageButton>(R.id.navMenuButton)
-            .setOnClickListener {
-                myDrawer.openDrawer(GravityCompat.START)
-                while (myDrawer.isDrawerVisible(GravityCompat.START)){
-                myDrawer.bringToFront()
-                }
-            }
-        onMenuItemSelected()
+        val myDrawer = findViewById<DrawerLayout>(R.id.my_drawer)
+        val navMenuButton = findViewById<ImageButton>(R.id.navMenuButton)
+        navMenuButton.setOnClickListener {
+            myDrawer.openDrawer(GravityCompat.START)
+        }
+        val layout = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar_layout)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.) as NavHostFragment
+        val navController = navHostFragment.navController
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        layout.setupWithNavController(toolbar, navController, appBarConfiguration)
     }
-
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
+    }
 }
