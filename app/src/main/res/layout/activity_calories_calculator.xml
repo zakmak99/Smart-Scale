@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CaloriesCalculator">
 
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="200dp"
@@ -145,6 +146,7 @@
         android:id="@+id/spinnerActivityLevel"
         android:layout_width="384dp"
         android:layout_height="56dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
