@@ -13,14 +13,14 @@ class DietPlan : AppCompatActivity() {
 
         val gainButton = findViewById<Button>(R.id.buttonGain)
         gainButton.setOnClickListener{
-            val Intent = Intent(this, DietPlanGain::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, DietPlanGain::class.java)
+            startActivity(intent)
         }
 
         val loseButton = findViewById<Button>(R.id.buttonLose)
         loseButton.setOnClickListener{
-            val Intent = Intent(this, DietPlanLose::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, DietPlanLose::class.java)
+            startActivity(intent)
         }
     }
 }

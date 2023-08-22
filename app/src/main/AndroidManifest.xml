@@ -16,6 +16,12 @@
             android:name=".DietPlan"
             android:exported="false" />
         <activity
+            android:name=".DietPlanGain"
+            android:exported="false" />
+        <activity
+            android:name=".DietPlanLose"
+            android:exported="false" />
+        <activity
             android:name=".CaloriesCalculator"
             android:exported="false" />
         <activity

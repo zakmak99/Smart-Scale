@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Fitness Plan"
+        android:text="Diet Plan"
         android:textColor="#0FE1FF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
