@@ -14,7 +14,8 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.ArrayAdapter
 import android.widget.AdapterView
-
+import android.graphics.Color
+import android.util.Size
 
 
 class CaloriesCalculator : AppCompatActivity() {
@@ -31,7 +32,7 @@ class CaloriesCalculator : AppCompatActivity() {
         setContentView(R.layout.activity_calories_calculator)
 
 
-
+        //Calculate Button
         val calculateButton = findViewById<Button>(R.id.buttonCalculate)
         calculateButton.setOnClickListener {
             if(areFieldsValid()){
@@ -42,6 +43,7 @@ class CaloriesCalculator : AppCompatActivity() {
             }
         }
 
+        //Spinner Code
         val activityLevelSpinner = findViewById<Spinner>(R.id.spinnerActivityLevel)
         val activityLevels = resources.getStringArray(R.array.activity_levels)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, activityLevels)
@@ -49,6 +51,15 @@ class CaloriesCalculator : AppCompatActivity() {
         activityLevelSpinner.adapter = adapter
 
 
+        //Edit hint text Color
+        val editTextWeight = findViewById<EditText>(R.id.editTextNumberWeight)
+        val editTextHeight = findViewById<EditText>(R.id.editTextNumberHeight)
+        val editTextAge = findViewById<EditText>(R.id.editTextNumberAge)
+        val newHintColor = Color.parseColor("#0FE1FF")
+
+        editTextWeight.setHintTextColor(newHintColor)
+        editTextHeight.setHintTextColor(newHintColor)
+        editTextAge.setHintTextColor(newHintColor)
 
     }
 

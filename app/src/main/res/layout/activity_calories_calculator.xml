@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".CaloriesCalculator">
 
 
@@ -26,6 +27,7 @@
         android:text="Smart Scale"
         android:textAlignment="center"
         android:textSize="20dp"
+        android:textColor="#0FE1FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Please Enter the Fallowing"
         android:textSize="20dp"
+        android:textColor="#0FE1FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,20 +90,19 @@
         app:layout_constraintVertical_bias="0.652" />
 
 
-
     <Button
         android:id="@+id/buttonCalculate"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calculate"
+        android:textColor="#0FE1FF"
         android:textSize="20dp"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.948" />
 
     <RadioGroup
         android:id="@+id/radioGroupGender"
@@ -118,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Male"
-
+            android:textColor="#0FE1FF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.046"
@@ -131,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Female"
-
+            android:textColor="#0FE1FF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.299"
@@ -151,8 +153,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupGender"
+        app:layout_constraintVertical_bias="0.629" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
