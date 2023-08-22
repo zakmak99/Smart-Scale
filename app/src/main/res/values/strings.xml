@@ -17,11 +17,11 @@
     <string name="bmi_result">BMI Result:</string>
 
     <string-array name="activity_levels">
-        <item>Little to no exercise</item>
-        <item>Light exercise (1-3 days/week)</item>
-        <item>Moderate exercise (3-5 days/week)</item>
-        <item>Heavy exercise (6-7 days/week)</item>
-        <item>Very heavy exercise (twice/day, extra heavy workouts)</item>
+        <item>Sedentary</item>
+        <item>Lightly Active</item>
+        <item>Moderately Active</item>
+        <item>Very Active</item>
+        <item>Extra Active</item>
     </string-array>
 
 </resources>
