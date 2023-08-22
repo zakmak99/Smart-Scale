@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_host_fragment2">
+
+    <activity
+        android:id="@+id/BMICalculator"
+        android:name="com.example.smartscaleapp.BMICalculator"
+        android:label="activity_bmicalculator"
+        tools:layout="@layout/activity_bmicalculator" />
+    <activity
+        android:id="@+id/BMIResults"
+        android:name="com.example.smartscaleapp.BMIResults"
+        android:label="activity_bmiresults"
+        tools:layout="@layout/activity_bmiresults" />
+    <activity
+        android:id="@+id/caloriesCalculator"
+        android:name="com.example.smartscaleapp.CaloriesCalculator"
+        android:label="activity_calories_calculator"
+        tools:layout="@layout/activity_calories_calculator" />
+    <fragment
+        android:id="@+id/nav_host_fragment2"
+        android:name="com.example.smartscaleapp.nav_host_fragment"
+        android:label="fragment_nav_host_fragment"
+        tools:layout="@layout/fragment_nav_host_fragment" >
+        <action
+            android:id="@+id/action_nav_host_fragment2_to_BMIResults"
+            app:destination="@id/BMIResults" />
+        <action
+            android:id="@+id/action_nav_host_fragment2_to_BMICalculator"
+            app:destination="@id/BMICalculator" />
+        <action
+            android:id="@+id/action_nav_host_fragment2_to_caloriesCalculator"
+            app:destination="@id/caloriesCalculator" />
+    </fragment>
+</navigation>
