@@ -25,6 +25,9 @@
             android:name=".CaloriesCalculator"
             android:exported="false" />
         <activity
+            android:name=".CaloriesCalcResult"
+            android:exported="false" />
+        <activity
             android:name=".BMICalculator"
             android:exported="false" />
         <activity
