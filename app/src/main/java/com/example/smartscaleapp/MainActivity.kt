@@ -28,11 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         val dietPlanButton = findViewById<Button>(R.id.buttonDietPlan)
         dietPlanButton.setOnClickListener{
-            //val intent = intent(this, DietPlan::class.java)
-            startActivity(intent)
+            val Intent = Intent(this, DietPlan::class.java)
+            startActivity(Intent)
         }
-
-
-
     }
 }

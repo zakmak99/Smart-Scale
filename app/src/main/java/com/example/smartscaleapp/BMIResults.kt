@@ -11,7 +11,7 @@ class BMIResults : AppCompatActivity() {
 
         val resultText = intent.getStringExtra("result")
 
-        val resultTextView = findViewById<TextView>(R.id.resultTextView)
-        resultTextView.text = resultText
+//        val resultTextView = findViewById<TextView>(R.id.resultTextView)
+//        resultTextView.text = resultText
     }
 }

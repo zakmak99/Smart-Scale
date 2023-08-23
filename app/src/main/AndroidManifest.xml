@@ -13,10 +13,13 @@
         android:theme="@style/Theme.SmartScaleApp"
         tools:targetApi="31">
         <activity
-            android:name=".CaloriesCalcResult"
+            android:name=".DietPlan"
             android:exported="false" />
         <activity
-            android:name=".FitnessPlan"
+            android:name=".DietPlanGain"
+            android:exported="false" />
+        <activity
+            android:name=".DietPlanLose"
             android:exported="false" />
         <activity
             android:name=".CaloriesCalculator"
