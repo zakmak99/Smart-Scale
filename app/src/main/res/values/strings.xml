@@ -6,7 +6,7 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
     <string name="menu_button">Navigation Menu</string>
-
+    <string name="night_switch">Dark Mode</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="smart_scale">Smart Scale</string>
@@ -16,7 +16,6 @@
     <string name="enter_height_cm">Enter Height (cm)</string>
     <string name="calculate_bmi">Calculate BMI</string>
     <string name="bmi_result">BMI Result:</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
