@@ -8,10 +8,12 @@ import android.widget.ImageButton
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
 
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             val Intent = Intent(this, DietPlan::class.java)
             startActivity(Intent)
         }
+
         val layout = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar_layout)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val navHostFragment =
@@ -52,6 +55,8 @@ class MainActivity : AppCompatActivity() {
         layout.setupWithNavController(toolbar, navController, appBarConfiguration)
         findViewById<Toolbar>(R.id.toolbar)
             .setupWithNavController(navController, appBarConfiguration)
+
+
     }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)

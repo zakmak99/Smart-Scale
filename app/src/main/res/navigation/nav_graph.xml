@@ -3,36 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_host_fragment2">
+    app:startDestination="@id/Home">
 
-    <activity
-        android:id="@+id/BMICalculator"
-        android:name="com.example.smartscaleapp.BMICalculator"
-        android:label="activity_bmicalculator"
-        tools:layout="@layout/activity_bmicalculator" />
-    <activity
-        android:id="@+id/BMIResults"
-        android:name="com.example.smartscaleapp.BMIResults"
-        android:label="activity_bmiresults"
-        tools:layout="@layout/activity_bmiresults" />
-    <activity
-        android:id="@+id/caloriesCalculator"
-        android:name="com.example.smartscaleapp.CaloriesCalculator"
-        android:label="activity_calories_calculator"
-        tools:layout="@layout/activity_calories_calculator" />
     <fragment
-        android:id="@+id/nav_host_fragment2"
-        android:name="com.example.smartscaleapp.nav_host_fragment"
+        android:id="@+id/Home"
+        android:name="com.example.smartscaleapp.NavHostFragment"
         android:label="fragment_nav_host_fragment"
         tools:layout="@layout/fragment_nav_host_fragment" >
         <action
-            android:id="@+id/action_nav_host_fragment2_to_BMIResults"
-            app:destination="@id/BMIResults" />
-        <action
-            android:id="@+id/action_nav_host_fragment2_to_BMICalculator"
-            app:destination="@id/BMICalculator" />
-        <action
-            android:id="@+id/action_nav_host_fragment2_to_caloriesCalculator"
-            app:destination="@id/caloriesCalculator" />
+            android:id="@+id/action_Home_to_settings"
+            app:destination="@id/Settings" />
     </fragment>
+    <fragment
+        android:id="@+id/Settings"
+        android:name="com.example.smartscaleapp.Settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
