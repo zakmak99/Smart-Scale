@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".CaloriesCalcResult">
 
     <TextView
@@ -13,6 +14,8 @@
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="30dp"
+        android:textColor="#0FE1FF"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +40,7 @@
         android:layout_height="wrap_content"
         android:text="Smart Scale"
         android:textSize="20dp"
+        android:textColor="#0FE1FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.855"
