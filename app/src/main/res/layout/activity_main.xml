@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/black">
+    android:background="@color/black"
+    tools:context=".MainActivity">
 
 
     <TextView
@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="Smart Scale"
-        android:textSize="30sp"
         android:textColor="#0FE1FF"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
@@ -38,24 +38,23 @@
 
     <Button
         android:id="@+id/buttonBMICalc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginBottom="364dp"
-        android:backgroundTint="@color/cardview_dark_background"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="254dp"
+        android:layout_height="53dp"
         android:text="BMI Calculator"
         android:textColor="#0FE1FF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.916" />
+        app:layout_constraintVertical_bias="0.168" />
 
     <Button
         android:id="@+id/buttonCaloriesCalc"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="318dp"
-        android:layout_height="55dp"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="259dp"
+        android:layout_height="50dp"
         android:layout_marginTop="56dp"
         android:text="Calories Calculator"
         android:textColor="#0FE1FF"
@@ -70,8 +69,8 @@
     <Button
         android:id="@+id/buttonDietPlan"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="259dp"
+        android:layout_height="48dp"
         android:layout_marginTop="80dp"
         android:text="Diet Plan"
         android:textColor="#0FE1FF"
@@ -82,8 +81,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCaloriesCalc"
         app:layout_constraintVertical_bias="0.0" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
