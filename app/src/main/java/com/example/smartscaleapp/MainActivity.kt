@@ -16,9 +16,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,41 +28,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val bmiCalcButton = findViewById<Button>(R.id.buttonBMICalc)
-        bmiCalcButton.setOnClickListener{
-            val intent = Intent(this, BMICalculator::class.java)
-            startActivity(intent)
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_fragment
+        ) as NavHostFragment
+        navController = navHostFragment.navController
 
-
-        val caloriesCalButton = findViewById<Button>(R.id.buttonCaloriesCalc)
-        caloriesCalButton.setOnClickListener{
-            val intent = Intent(this, CaloriesCalculator::class.java)
-            startActivity(intent)
-        }
-
-
-        val dietPlanButton = findViewById<Button>(R.id.buttonDietPlan)
-        dietPlanButton.setOnClickListener{
-            val Intent = Intent(this, DietPlan::class.java)
-            startActivity(Intent)
-        }
-
-        val layout = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar_layout)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        layout.setupWithNavController(toolbar, navController, appBarConfiguration)
-        findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(navController, appBarConfiguration)
-
-
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bottomNavigationView.setupWithNavController(navController)
+/*
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.home, R.id.settings2)
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)*/
     }
+
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
     }
 }
