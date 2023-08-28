@@ -3,20 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/Home">
-
-    <fragment
-        android:id="@+id/Home"
-        android:name="com.example.smartscaleapp.NavHostFragment"
-        android:label="fragment_nav_host_fragment"
-        tools:layout="@layout/fragment_nav_host_fragment" >
-        <action
-            android:id="@+id/action_Home_to_settings"
-            app:destination="@id/Settings" />
-    </fragment>
-    <fragment
-        android:id="@+id/Settings"
-        android:name="com.example.smartscaleapp.Settings"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+    app:startDestination="@id/home">
+    <include app:graph="@navigation/bmi_calc_nav" />
+    <include app:graph="@navigation/calorie_calc_nav" />
+    <include app:graph="@navigation/diet_plan_nav" />
+    <include app:graph="@navigation/home" />
+    <include app:graph="@navigation/settings_nav" />
 </navigation>
