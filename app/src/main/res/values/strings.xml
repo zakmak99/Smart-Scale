@@ -16,6 +16,16 @@
     <string name="enter_height_cm">Enter Height (cm)</string>
     <string name="calculate_bmi">Calculate BMI</string>
     <string name="bmi_result">BMI Result:</string>
+    <string name="cd_home">Home</string>
+    <string name="cd_bmi">BMI Calculator</string>
+    <string name="cd_calorie">Calorie Calculator</string>
+    <string name="cd_diet">Diet Plan</string>
+    <string name="cd_settings">Settings</string>
+    <string name="title_home">Home</string>
+    <string name="title_bmi">BMI Calculator</string>
+    <string name="title_calorie">Calorie Calculator</string>
+    <string name="title_diet">Diet Plan</string>
+    <string name="title_settings">Settings</string>
 
     <string-array name="activity_levels">
         <item>Sedentary</item>
@@ -26,6 +36,7 @@
     </string-array>
 
     <string name="title_fragment">Title Fragment</string>
+
 
 
 </resources>

@@ -33,13 +33,13 @@ class MainActivity : AppCompatActivity() {
         ) as NavHostFragment
         navController = navHostFragment.navController
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        bottomNavigationView.setupWithNavController(navController)
-/*
+        findViewById<BottomNavigationView>(R.id.bottom_nav)
+            .setupWithNavController(navController)
+
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home, R.id.settings2)
+            setOf(R.id.title2, R.id.BMICalculator1,  R.id.caloriesCalculator1, R.id.dietPlan1, R.id.settings2)
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)*/
+        /*setupActionBarWithNavController(navController, appBarConfiguration)*/
     }
 
     override fun onSupportNavigateUp(): Boolean {
