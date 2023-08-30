@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bmi_calc_nav">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bmi_calc_nav"
+    app:startDestination="@id/BMICalculator1">
+    <fragment
+        android:id="@+id/BMICalculator1"
+        android:name="com.example.smartscaleapp.BMICalculator1"
+        android:label="fragment_bmi_calculator1"
+        tools:layout="@layout/fragment_bmi_calculator1" >
+        <action
+            android:id="@+id/action_BMICalculator1_to_BMIResults1"
+            app:destination="@id/BMIResults1" />
+    </fragment>
+    <fragment
+        android:id="@+id/BMIResults1"
+        android:name="com.example.smartscaleapp.BMIResults1"
+        android:label="fragment_bmi_results1"
+        tools:layout="@layout/fragment_bmi_results1" />
 </navigation>
