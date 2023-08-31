@@ -11,14 +11,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <androidx.appcompat.widget.SwitchCompat
+
             android:id="@+id/Night_Switch"
             android:layout_width="157dp"
             android:layout_height="81dp"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="116dp"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="148dp"
             android:text="@string/night_switch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
