@@ -35,6 +35,21 @@
 <!--    </string-array>-->
 
     <string name="title_fragment">Title Fragment</string>
-    <string name="night_switch">Night Switch Text</string>
+    <string name="night_switch">Night Switch</string>
+
+    <string name="cd_home">Content Description for Home</string>
+    <string name="title_home">Home</string>
+
+    <string name="cd_bmi">Content Description for BMI</string>
+    <string name="title_bmi">BMI Calculator</string>
+
+    <string name="cd_calorie">Content Description for Calorie</string>
+    <string name="title_calorie">Calorie Calculator</string>
+
+    <string name="cd_diet">Content Description for Diet</string>
+    <string name="title_diet">Diet Plan</string>
+
+    <string name="cd_settings">Content Description for Settings</string>
+    <string name="title_settings">Settings</string>
 
 </resources>
