@@ -13,8 +13,8 @@ class DietPlanGain : AppCompatActivity(){
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
 
         val foodItemList = listOf(
-            FoodItem("Chicken and white Rice", 526, 58.4),
-            FoodItem("Salmon", 175, 22.1),
+            FoodItem("Yorkshire pudding wrap", 488, 31.0),
+            FoodItem("Rigatoni sausage bake", 487, 24.1),
 
         )
 

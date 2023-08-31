@@ -19,19 +19,17 @@ class DietPlan : AppCompatActivity() {
             val activityLevel = findViewById<EditText>(R.id.activityLevelEditText).text.toString()
             val mealsPerDay = findViewById<EditText>(R.id.mealsPerDayEditText).text.toString()
 
-            // Validate inputs and handle missing values
+
             if (age.isBlank() || goal.isBlank() || activityLevel.isBlank() || mealsPerDay.isBlank()) {
-                // Show an error message to the user
-                Toast.makeText(this, "Please fill in all the required fields.", Toast.LENGTH_SHORT).show()
+                // Shows an error message to the user
+                Toast.makeText(this, "Please fill in your info.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Additional questions logic and decision-making based on inputs
             if (age.isNotBlank() && goal.isNotBlank() && activityLevel.isNotBlank() && mealsPerDay.isNotBlank()) {
                 val intent = when {
                     goal.equals("gain", ignoreCase = true) -> Intent(this, DietPlanGain::class.java)
                     goal.equals("lose", ignoreCase = true) -> Intent(this, DietPlanLose::class.java)
-                    // Handle other cases or show an error
                     else -> null
                 }
 

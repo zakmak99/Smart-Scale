@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/ageEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Enter your age"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/goalEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Enter your goal (gain/lose)"
         app:layout_constraintTop_toBottomOf="@+id/ageEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
     <EditText
         android:id="@+id/activityLevelEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Enter your activity level (low/medium/high)"
         app:layout_constraintTop_toBottomOf="@+id/goalEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
     <EditText
         android:id="@+id/mealsPerDayEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Enter number of meals per day"
         app:layout_constraintTop_toBottomOf="@+id/activityLevelEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="228dp"
-        android:text="Would you like to either gain or lose weight?"
+        android:text="Enter your info"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
