@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "594636086110",
+    "project_id": "smart-scale-app-736e3",
+    "storage_bucket": "smart-scale-app-736e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594636086110:android:250b278bd62b59f0bc0dcf",
+        "android_client_info": {
+          "package_name": "com.example.smartscaleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594636086110-qgd9pfrkrhs6lkcm062d3vo8vh599vjc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartscaleapp",
+            "certificate_hash": "5a3ea42a6b98678712cfd2ba7b56c864468d1308"
+          }
+        },
+        {
+          "client_id": "594636086110-jnafo352l0jm0fco7ib8liitnk1i8ise.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXlpF8i0SwR-SlENFPhvDAJrEEu_cM-Dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594636086110-3b1vsqa7i296ffe86k3ad6vuk6q36f0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
