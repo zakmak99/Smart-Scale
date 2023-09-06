@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/diet_plan_nav"
+    app:startDestination="@id/dietPlan1">
+
+    <fragment
+        android:id="@+id/dietPlan1"
+        android:name="com.example.smartscaleapp.DietPlan1"
+        android:label="fragment_diet_plan1"
+        tools:layout="@layout/fragment_diet_plan1" >
+        <action
+            android:id="@+id/action_dietPlan1_to_dietPlanGain1"
+            app:destination="@id/dietPlanGain1" />
+        <action
+            android:id="@+id/action_dietPlan1_to_dietPlanLose1"
+            app:destination="@id/dietPlanLose1" />
+    </fragment>
+    <fragment
+        android:id="@+id/dietPlanGain1"
+        android:name="com.example.smartscaleapp.DietPlanGain1"
+        android:label="fragment_diet_plan_gain1"
+        tools:layout="@layout/fragment_diet_plan_gain1" />
+    <fragment
+        android:id="@+id/dietPlanLose1"
+        android:name="com.example.smartscaleapp.DietPlanLose1"
+        android:label="fragment_diet_plan_lose1"
+        tools:layout="@layout/fragment_diet_plan_lose1" />
+</navigation>

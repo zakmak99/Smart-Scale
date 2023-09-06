@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calorie_calc_nav"
+    app:startDestination="@id/caloriesCalculator1">
+
+    <fragment
+        android:id="@+id/caloriesCalculator1"
+        android:name="com.example.smartscaleapp.CaloriesCalculator1"
+        android:label="fragment_calories_calculator1"
+        tools:layout="@layout/fragment_calories_calculator1" >
+        <action
+            android:id="@+id/action_caloriesCalculator1_to_caloriesCalcResult1"
+            app:destination="@id/caloriesCalcResult1" />
+    </fragment>
+    <fragment
+        android:id="@+id/caloriesCalcResult1"
+        android:name="com.example.smartscaleapp.CaloriesCalcResult1"
+        android:label="fragment_calories_calc_result1"
+        tools:layout="@layout/fragment_calories_calc_result1" />
+</navigation>
