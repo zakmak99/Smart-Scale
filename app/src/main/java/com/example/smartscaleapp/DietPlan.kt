@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 
 class DietPlan : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +22,31 @@ class DietPlan : AppCompatActivity() {
             val activityLevel = findViewById<EditText>(R.id.activityLevelEditText).text.toString()
             val mealsPerDay = findViewById<EditText>(R.id.mealsPerDayEditText).text.toString()
 
+            val mealsPerDayEditText = findViewById<EditText>(R.id.mealsPerDayEditText)
+            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+            submitButton.setOnClickListener {
+                val mealsPerDay = mealsPerDayEditText.text.toString().toIntOrNull() ?: 0
+
+                val numberOfMealsToDisplay = when {
+                    mealsPerDay < 1 -> 1
+                    mealsPerDay > 3 -> 3
+                    else -> mealsPerDay
+                }
+
+                val foodItemList = generateFoodItemList(numberOfMealsToDisplay)
+
+                val adapter = DietPlanGainAdapter(foodItemList)
+                recyclerView.adapter = adapter
+                recyclerView.layoutManager = LinearLayoutManager(this)
+            }
+
+
+            intent?.apply {
+                putExtra("age", age)
+                putExtra("activityLevel", activityLevel)
+                putExtra("mealsPerDay", mealsPerDay)
+            }
 
             if (age.isBlank() || goal.isBlank() || activityLevel.isBlank() || mealsPerDay.isBlank()) {
                 // Shows an error message to the user
@@ -33,10 +61,47 @@ class DietPlan : AppCompatActivity() {
                     else -> null
                 }
 
+                intent?.apply {
+                    putExtra("age", age)
+                    putExtra("activityLevel", activityLevel)
+                    putExtra("mealsPerDay", mealsPerDay)
+                }
+
                 intent?.let {
                     startActivity(intent)
                 }
             }
         }
     }
+
+    private fun generateFoodItemList(numberOfMeals: Int): List<FoodItem> {
+
+        return when (numberOfMeals) {
+            1 -> listOf(
+                FoodItem("Meal 1", 500, 20.0),
+            )
+            2 -> listOf(
+                FoodItem("Meal 1", 500, 20.0),
+                FoodItem("Meal 2", 600, 25.0),
+            )
+            else -> listOf(
+                FoodItem("Meal 1", 500, 20.0),
+                FoodItem("Meal 2", 600, 25.0),
+                FoodItem("Meal 3", 700, 30.0),
+            )
+        }
+    }
+
+//    private fun saveFavoritesToSharedPreferences(favorites: List<FoodItem>) {
+//        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+//        val editor = sharedPreferences.edit()
+//        val gson = Gson() // You may need to add Gson to your dependencies
+//
+//        // Convert the list of favorites to a JSON string
+//        val jsonFavorites = gson.toJson(favorites)
+//
+//        // Store the JSON string in SharedPreferences
+//        editor.putString("favorites", jsonFavorites)
+//        editor.apply()
+//    }
 }

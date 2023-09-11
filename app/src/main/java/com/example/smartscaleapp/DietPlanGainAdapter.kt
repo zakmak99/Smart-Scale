@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 
 class DietPlanGainAdapter(private val itemList: List<FoodItem>) : RecyclerView.Adapter<DietPlanGainAdapter.ViewHolder>() {
 
@@ -22,6 +23,7 @@ class DietPlanGainAdapter(private val itemList: List<FoodItem>) : RecyclerView.A
         return ViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val foodItem = itemList[position]
 
@@ -32,9 +34,19 @@ class DietPlanGainAdapter(private val itemList: List<FoodItem>) : RecyclerView.A
         holder.favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
             foodItem.isFavorite = isChecked
         }
-    }
 
+//        holder.favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
+//            // Update the 'isFavorite' property of the corresponding food item
+//            foodItem.isFavorite = isChecked
+//
+//            // Store the updated list of favorites in SharedPreferences
+//            saveFavoritesToSharedPreferences(itemList)
+//
+//        }
+
+    }
     override fun getItemCount(): Int {
         return itemList.size
     }
+
 }

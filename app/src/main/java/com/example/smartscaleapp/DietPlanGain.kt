@@ -12,11 +12,31 @@ class DietPlanGain : AppCompatActivity(){
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
 
-        val foodItemList = listOf(
-            FoodItem("Yorkshire pudding wrap", 488, 31.0),
-            FoodItem("Rigatoni sausage bake", 487, 24.1),
+        val age = intent.getStringExtra("age")
+        val activityLevel = intent.getStringExtra("activityLevel")
+        val mealsPerDay = intent.getStringExtra("mealsPerDay")
 
-        )
+        val foodItemList = mutableListOf<FoodItem>()
+
+        if (mealsPerDay != null) {
+            when {
+                mealsPerDay.toInt() == 1 -> {
+                    foodItemList.add(FoodItem("Philly Cheesesteak", 900, 50.0))
+                }
+                mealsPerDay.toInt() == 2 -> {
+                    foodItemList.add(FoodItem("Meal 1", 500, 30.0))
+                    foodItemList.add(FoodItem("Meal 2", 600, 40.0))
+                }
+                mealsPerDay.toInt() >= 3 -> {
+                    foodItemList.add(FoodItem("Meal 1", 500, 30.0))
+                    foodItemList.add(FoodItem("Meal 2", 600, 40.0))
+                    foodItemList.add(FoodItem("Meal 3", 450, 25.0))
+                }
+                else -> {
+
+                }
+            }
+        }
 
         val adapter = DietPlanGainAdapter(foodItemList)
         recyclerView.adapter = adapter
