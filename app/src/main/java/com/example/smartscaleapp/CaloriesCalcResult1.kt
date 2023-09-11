@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +34,14 @@ class CaloriesCalcResult1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calories_calc_result1, container, false)
+        val view = inflater.inflate(R.layout.fragment_calories_calc_result1, container, false)
+
+        val dailyCalories = arguments?.getDouble("calories") ?: 0.0
+
+        val resultTextView = view.findViewById<TextView>(R.id.textViewResult)
+        resultTextView.text = "Daily Calories: $dailyCalories"
+
+        return view
     }
 
     companion object {
