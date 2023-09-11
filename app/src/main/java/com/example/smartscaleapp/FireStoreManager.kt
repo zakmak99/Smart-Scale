@@ -71,6 +71,36 @@ class FireStoreManager {
                 onComplete(emptyList())
             }
     }
+    fun storeUserProfile(userEmail: String, userProfile: UserProfile, onComplete: (Boolean) -> Unit) {
+        db.collection("user_profiles")
+            .document(userEmail) // Use the user's email as the document ID
+            .set(userProfile)
+            .addOnSuccessListener {
+                onComplete(true)
+            }
+            .addOnFailureListener {
+                onComplete(false)
+            }
+    }
+
+    // New method to retrieve user profile data
+    fun getUserProfile(userEmail: String, onComplete: (UserProfile?) -> Unit) {
+        db.collection("user_profiles")
+            .document(userEmail) // Use the user's email as the document ID
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val userProfile = document.toObject(UserProfile::class.java)
+                    onComplete(userProfile)
+                } else {
+                    onComplete(null)
+                }
+            }
+            .addOnFailureListener {
+                onComplete(null)
+            }
+    }
 }
+
     // can add more
 
