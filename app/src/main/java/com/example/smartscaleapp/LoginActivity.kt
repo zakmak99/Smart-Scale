@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
 
@@ -60,10 +61,10 @@ class LoginActivity : AppCompatActivity() {
             val displayName = data?.getStringExtra("display_name")
             if (displayName != null) {
                 // Handle the display name (e.g., save it, display it)
-                // Now, navigate to the desired activity (MainActivity)
+                // now go to mainactivity
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish() // Optional: Close the login activity
+                finish()
             }
         }
     }
@@ -86,22 +87,40 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    // After successful sign-in, add user data to Firestore
                     if (user != null) {
                         val firestoreManager = FireStoreManager()
                         val userData = User(user.email ?: "", user.displayName ?: "")
-                        firestoreManager.addUser(userData)
-                        println("Sign in successful") // Debug statement
-                        // Prompt the user to set their display name
-                        showDisplayNamePrompt()
-                        // Navigate to the desired activity here
+
+                        // Check if the user's email exists in Firestore
+                        checkIfEmailExistsInFirestore(userData.email)
                     }
                 } else {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
 
+    }
+    private fun checkIfEmailExistsInFirestore(email: String) {
+        val db = FirebaseFirestore.getInstance()
+        val query = db.collection("users").whereEqualTo("email", email)
+
+        query.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val querySnapshot = task.result
+                if (querySnapshot != null && !querySnapshot.isEmpty) {
+                    // Email exists in Firestore; no need to show display name prompt
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    // Email doesn't exist in Firestore; show display name prompt
+                    showDisplayNamePrompt()
+                }
+            } else {
+                Toast.makeText(this, "Error checking email in Firestore", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
     private fun signInGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         launcher.launch(signInIntent)
@@ -135,21 +154,44 @@ class LoginActivity : AppCompatActivity() {
                 if (user != null) {
                     val firestoreManager = FireStoreManager()
                     val userData = User(user.email ?: "", user.displayName ?: "")
-                    firestoreManager.addUser(userData)
-                    println("Sign in with Google successful") // Debug statement
+                    addUserToFirestore(userData.email, userData.displayName) // Add user data to Firestore
+                    println("Sign in with Google successful") // use for debugin statement
                     // Prompt the user to set their display name
-                    showDisplayNamePrompt()
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("email", account.email)
+                    intent.putExtra("name", account.displayName)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
                 }
-                intent.putExtra("email", account.email)
-                intent.putExtra("name", account.displayName)
-                startActivity(intent)
             } else {
                 Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 
             }
         }
     }
+    private fun addUserToFirestore(email: String, displayName: String) {
+        val db = FirebaseFirestore.getInstance()
+        val userUid = FirebaseAuth.getInstance().currentUser?.uid
 
+        if (userUid != null) {
+            val userData = hashMapOf(
+                "email" to email,
+                "displayName" to displayName
+            )
+
+            db.collection("users")
+                .document(userUid)
+                .set(userData)
+                .addOnSuccessListener {
+                    Log.d("Firestore", "User data added/updated successfully")
+                }
+                .addOnFailureListener { e ->
+                    Log.e("Firestore", "Error adding/updating user data", e)
+                }
+        }
+    }
     private fun showDisplayNamePrompt() {
         Log.d("DisplayNameActivity", "Checking for display name in SharedPreferences")
         val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
