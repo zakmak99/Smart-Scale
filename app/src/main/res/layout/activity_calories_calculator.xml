@@ -27,7 +27,7 @@
         android:text="Smart Scale"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="#0FE1FF"
+        android:textColor="#404040"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

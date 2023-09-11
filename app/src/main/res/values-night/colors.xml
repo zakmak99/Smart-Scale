@@ -5,7 +5,7 @@
 
     <color name="button_text_color">#FFFFFF</color>
     <color name="button_background_color">#0088FF</color>
-    <color name="background_color">#FFFFFF</color>
-    <color name="text_color">#FF000000</color>
+    <color name="background_color">#FF000000</color>
+    <color name="text_color">#0FE1FF</color>
 </resources>
 
