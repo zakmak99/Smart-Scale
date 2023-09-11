@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:contentDescription="@string/cd_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/bmi_calc_nav"
+        android:contentDescription="@string/cd_bmi"
+        android:title="@string/title_bmi" />
+    <item
+        android:id="@+id/calorie_calc_nav"
+        android:contentDescription="@string/cd_calorie"
+        android:title="@string/title_calorie" />
+    <item
+        android:id="@+id/diet_plan_nav"
+        android:contentDescription="@string/cd_diet"
+        android:title="@string/title_diet" />
+    <item
+        android:id="@+id/settings_nav"
+        android:contentDescription="@string/cd_settings"
+        android:title="@string/title_settings"
+        app:showAsAction="always" />
+
+</menu>
