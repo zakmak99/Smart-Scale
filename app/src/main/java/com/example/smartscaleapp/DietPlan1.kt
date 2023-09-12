@@ -24,11 +24,13 @@ class DietPlan1 : Fragment() {
         gainButton.setOnClickListener {
             // Handle "gain" button click
             // Navigate to the next fragment or perform any action you want
+            findNavController().navigate(R.id.action_dietPlan1_to_dietPlanGain1)
         }
 
         loseButton.setOnClickListener {
             // Handle "lose" button click
             // Navigate to the next fragment or perform any action you want
+            findNavController().navigate(R.id.action_dietPlan1_to_dietPlanLose1)
         }
 
         return view
