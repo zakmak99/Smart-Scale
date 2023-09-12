@@ -54,7 +54,7 @@ class CaloriesCalculator1 : Fragment() {
         val dailyCalories = calculateCalories(sex, weight, height, age)
 
         val activityLevelSpinner = view.findViewById<Spinner>(R.id.spinnerActivityLevel)
-        val selectedActivityLevel = activityLevelSpinner.selectedItem.toString().trim()
+        val selectedActivityLevel = activityLevelSpinner.selectedItem.toString()
 
         // Bundle to pass data to the next fragment
         val bundle = Bundle()
@@ -63,7 +63,7 @@ class CaloriesCalculator1 : Fragment() {
 
 
         // Use findNavController from the Fragment to navigate
-        findNavController().navigate(R.id.action_caloriesCalculator1_to_caloriesCalcResult1)
+        findNavController().navigate(R.id.action_caloriesCalculator1_to_caloriesCalcResult1, bundle)
     }
     private fun calculateCalories(sex: String, weightLb: Double, heightIn: Double, age: Int): Double{
 
@@ -75,13 +75,7 @@ class CaloriesCalculator1 : Fragment() {
             bmr = 447.593 + (9.247 * weightLb) + (3.098 * heightIn) - (4.330 * age)
         }
 
-//           val activityLevelMultiplierMap = mapOf(
-//               "Sedentary" to 1.2,
-//               "Lightly Active" to 1.375,
-//               "Moderately Active" to 1.55,
-//               "Very Active" to 1.725,
-//               "Extra Active" to 1.9
-//           )
+
 
         val activityLevelSpinner = view?.findViewById<Spinner>(R.id.spinnerActivityLevel)
         val selectedActivityLevel = activityLevelSpinner?.selectedItem.toString()
