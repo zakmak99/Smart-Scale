@@ -3,10 +3,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 class FireStoreManager {
     private val db = FirebaseFirestore.getInstance()
 
-    fun addUser(userId: String, user: User) {
+    fun addUser(user: User) {
         db.collection("users")
-            .document(userId) // Specify the document ID (e.g., user's UID)
-            .set(user)
+            .add(user)
             .addOnSuccessListener {
                 // Successfully added the user
             }
@@ -14,7 +13,6 @@ class FireStoreManager {
                 // Handle failure
             }
     }
-
     fun getUserById(userId: String, onComplete: (User?) -> Unit) {
         db.collection("users")
             .document(userId)
