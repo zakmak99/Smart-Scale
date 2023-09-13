@@ -113,7 +113,13 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    // Email doesn't exist in Firestore; show display name prompt
+                    // Email doesn't exist in Firestore; add user data to Firestore
+                    val user = auth.currentUser
+                    if (user != null) {
+                        val userData = User(user.email ?: "", user.displayName ?: "")
+                        addUserToFirestore(userData.email, userData.displayName)
+                    }
+                    // Show display name prompt
                     showDisplayNamePrompt()
                 }
             } else {
@@ -121,6 +127,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun signInGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         launcher.launch(signInIntent)
