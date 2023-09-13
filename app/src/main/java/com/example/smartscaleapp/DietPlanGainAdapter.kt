@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
+//import com.google.gson.Gson
 
 class DietPlanGainAdapter(private val itemList: List<FoodItem>) : RecyclerView.Adapter<DietPlanGainAdapter.ViewHolder>() {
 

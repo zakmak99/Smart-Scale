@@ -3,8 +3,8 @@ package com.example.smartscaleapp
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
-import com.google.gson.Gson
+//import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
+//import com.google.gson.Gson
 
 class FavoriteFoods: AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
