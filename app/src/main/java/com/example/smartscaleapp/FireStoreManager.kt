@@ -102,5 +102,4 @@ class FireStoreManager {
     }
 }
 
-    // can add more
-
+   // new fix

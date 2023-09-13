@@ -209,3 +209,4 @@ class LoginActivity : AppCompatActivity() {
         const val REQUEST_DISPLAY_NAME = 1
     }
 }
+// new fix
