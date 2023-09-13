@@ -21,7 +21,7 @@
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/Theme.SmartScaleApp" />
         <activity
-            android:name=".DashboardActivity"
+            android:name=".SignOutActivity"
             android:exported="false" />
 
         <meta-data

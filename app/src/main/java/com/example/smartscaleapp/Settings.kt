@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import com.google.android.material.button.MaterialButton
 
 
 class Settings : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -24,6 +25,13 @@ class Settings : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenc
         val darkmodePreference = SwitchPreferenceCompat(context)
         darkmodePreference.key = "Dark Mode"
         darkmodePreference.title = "Enable Dark Mode"
+        /*val button = findPreference(getString(R.string.signOut));
+        button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                //code for what you want it to do
+                return true;
+            }*/
 
         screen.addPreference(darkmodePreference)
         preferenceScreen = screen

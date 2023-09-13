@@ -15,7 +15,7 @@
     <string name="enter_height_cm">Enter Height (cm)</string>
     <string name="calculate_bmi">Calculate BMI</string>
     <string name="bmi_result">BMI Result:</string>
-
+    <string name="signOut">Sign Out</string>
     <string-array name="activity_levels">
         <item>Sedentary</item>
         <item>Lightly Active</item>
