@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name = "Theme.SmartScaleApp" parent = "Theme.AppCompat.Light.NoActionBar">
+    <style name = "Theme.SmartScaleApp" parent = "Theme.MaterialComponents.NoActionBar">
         <item name="background">@color/background_color</item>
         <item name="android:textColor">@color/text_color</item>
         <item name="colorOutline">@color/text_color</item>
