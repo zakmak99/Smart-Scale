@@ -43,6 +43,38 @@ class LoginActivity : AppCompatActivity() {
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         rememberMeCheckbox = findViewById(R.id.rememberMeCheckbox)
+
+        // Read the saved state of the "Remember Me" checkbox from SharedPreferences
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val isRememberMeChecked = sharedPreferences.getBoolean("rememberMeChecked", false)
+
+        // Set the checkbox state based on the saved state
+        rememberMeCheckbox.isChecked = isRememberMeChecked
+
+        // Set an OnCheckedChangeListener for the "Remember Me" checkbox
+        rememberMeCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            // Save the state of the "Remember Me" checkbox in SharedPreferences
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("rememberMeChecked", isChecked)
+            editor.apply()
+
+            if (isChecked) {
+                // Populate email and password fields from SharedPreferences
+                val savedEmail = sharedPreferences.getString("email", null)
+                val savedPassword = sharedPreferences.getString("password", null)
+
+                if (savedEmail != null && savedPassword != null) {
+                    emailEditText.setText(savedEmail)
+                    passwordEditText.setText(savedPassword)
+                    Log.d("RememberMe", "Email and password populated from SharedPreferences")
+                }
+            } else {
+                // Clear the email and password fields when "Remember Me" is unchecked
+                emailEditText.text.clear()
+                passwordEditText.text.clear()
+            }
+        }
+
         // Check if the user is already authenticated
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -61,18 +93,6 @@ class LoginActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.forgotPasswordBtn).setOnClickListener {
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
-
-            // Check if email and password are saved in SharedPreferences (Remember Me)
-            val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-            val savedEmail = sharedPreferences.getString("email", null)
-            val savedPassword = sharedPreferences.getString("password", null)
-
-            if (savedEmail != null && savedPassword != null) {
-                // Set the email and password in your EditText fields
-                emailEditText.setText(savedEmail)
-                passwordEditText.setText(savedPassword)
-                rememberMeCheckbox.isChecked = true
-            }
         }
 
     }
@@ -121,7 +141,8 @@ class LoginActivity : AppCompatActivity() {
                         checkIfEmailExistsInFirestore(userData.email)
                     }
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Authentication failed: ${task.exception}", Toast.LENGTH_SHORT).show()
+                    Log.e("SignInWithEmail", "Authentication failed", task.exception)
                 }
             }
     }
