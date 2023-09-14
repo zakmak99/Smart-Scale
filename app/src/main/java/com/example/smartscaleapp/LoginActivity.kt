@@ -96,20 +96,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == REQUEST_DISPLAY_NAME && resultCode == Activity.RESULT_OK) {
-            val displayName = data?.getStringExtra("display_name")
-            if (displayName != null) {
-                // Handle the display name (e.g., save it, display it)
-                // now go to mainactivity
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-        }
-    }
 
     private fun signInWithEmail() {
         val email = emailEditText.text.toString()
@@ -172,50 +158,84 @@ class LoginActivity : AppCompatActivity() {
         launcher.launch(signInIntent)
     }
 
-    private val launcher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            handleGoogleSignInResult(task)
+        } else {
+            // Handle the case where the user canceled the Google Sign-In process
+            Toast.makeText(this, "Google Sign-In canceled", Toast.LENGTH_SHORT).show()
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                handleResults(task)
+        if (requestCode == REQUEST_DISPLAY_NAME && resultCode == Activity.RESULT_OK) {
+            val displayName = data?.getStringExtra("display_name")
+            if (displayName != null) {
+                // Handle the display name (e.g., save it, display it)
+                // now go to mainactivity
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
-
-    private fun handleResults(task: Task<GoogleSignInAccount>) {
-        if (task.isSuccessful) {
-            val account: GoogleSignInAccount? = task.result
-            if (account != null) {
-                updateUI(account)
+    }
+    private fun handleGoogleSignInResult(task: Task<GoogleSignInAccount>) {
+        try {
+            if (task.isSuccessful) {
+                val account: GoogleSignInAccount? = task.result
+                if (account != null) {
+                    // Successfully obtained Google account, now sign in with Firebase
+                    firebaseAuthWithGoogle(account)
+                } else {
+                    // Handle the case where the account is null
+                    Toast.makeText(this, "Google Sign-In failed: Account is null", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                // Handle the case where the task was not successful
+                val exception = task.exception
+                if (exception != null) {
+                    // Handle specific error codes or messages
+                    Toast.makeText(this, "Google Sign-In failed: ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Handle other non-exception cases
+                    Toast.makeText(this, "Google Sign-In failed for an unknown reason", Toast.LENGTH_SHORT).show()
+                }
             }
-        } else {
-            Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
+        } catch (e: Exception) {
+            // Handle unexpected exceptions here
+            Toast.makeText(this, "An unexpected error occurred during Google Sign-In", Toast.LENGTH_SHORT).show()
+            Log.e("GoogleSignIn", "Error handling Google Sign-In result", e)
         }
     }
 
-    private fun updateUI(account: GoogleSignInAccount) {
+    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener {
-            if (it.isSuccessful) {
-                val user = auth.currentUser
-                if (user != null) {
-                    val firestoreManager = FireStoreManager()
-                    val userData = User(user.email ?: "", user.displayName ?: "")
-                    addUserToFirestore(userData.email, userData.displayName) // Add user data to Firestore
-                    println("Sign in with Google successful") // use for debugin statement
-                    // Prompt the user to set their display name
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra("email", account.email)
-                    intent.putExtra("name", account.displayName)
-                    startActivity(intent)
-                    finish()
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Firebase authentication with Google succeeded
+                    val user = auth.currentUser
+                    if (user != null) {
+                        // Add user data to Firestore and navigate to the main activity
+                        addUserToFirestore(user.email ?: "", user.displayName ?: "")
+                        navigateToMainActivity()
+                    } else {
+                        Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
-                    Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+                    // Firebase authentication with Google failed
+                    Toast.makeText(this, "Firebase authentication failed: ${task.exception?.localizedMessage}", Toast.LENGTH_SHORT).show()
+                    Log.e("FirebaseAuth", "Firebase authentication failed", task.exception)
                 }
-            } else {
-                Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-
             }
-        }
+    }
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
     private fun addUserToFirestore(email: String, displayName: String) {
         val db = FirebaseFirestore.getInstance()
@@ -249,11 +269,7 @@ class LoginActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_DISPLAY_NAME)
         }
     }
-    private fun navigateToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
+
 
 
     companion object {
