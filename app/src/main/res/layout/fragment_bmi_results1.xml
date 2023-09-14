@@ -85,7 +85,7 @@
         android:layout_height="20dp"
         android:max="100"
         android:progress="50"
-        android:progressDrawable="@drawable/bmi_progress_drawable"
+
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
