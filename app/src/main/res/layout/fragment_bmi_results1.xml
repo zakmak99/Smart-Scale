@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/resultTextView"
         app:layout_constraintVertical_bias="0.737" />
 
-    <ProgressBar
+   <!-- <ProgressBar
         android:id="@+id/bmiProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/resultTextView" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
