@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,7 +24,9 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var rememberMeCheckbox: CheckBox
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -37,7 +40,16 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
+        emailEditText = findViewById(R.id.emailEditText)
+        passwordEditText = findViewById(R.id.passwordEditText)
+        rememberMeCheckbox = findViewById(R.id.rememberMeCheckbox)
+        // Check if the user is already authenticated
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // If authenticated, navigate to MainActivity
+            navigateToMainActivity()
+            return
+        }
         findViewById<Button>(R.id.gSignInBtn).setOnClickListener {
             signInGoogle()
         }
@@ -50,9 +62,19 @@ class LoginActivity : AppCompatActivity() {
         findViewById<Button>(R.id.forgotPasswordBtn).setOnClickListener {
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
 
-//pasword reset
+            // Check if email and password are saved in SharedPreferences (Remember Me)
+            val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+            val savedEmail = sharedPreferences.getString("email", null)
+            val savedPassword = sharedPreferences.getString("password", null)
 
+            if (savedEmail != null && savedPassword != null) {
+                // Set the email and password in your EditText fields
+                emailEditText.setText(savedEmail)
+                passwordEditText.setText(savedPassword)
+                rememberMeCheckbox.isChecked = true
+            }
         }
+
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -70,11 +92,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signInWithEmail() {
-
-        val emailEditText = findViewById<EditText>(R.id.emailEditText)
-        val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
-
-
         val email = emailEditText.text.toString()
         val password = passwordEditText.text.toString()
 
@@ -86,6 +103,15 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Save email and password if "Remember Me" is checked
+                    if (rememberMeCheckbox.isChecked) {
+                        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putString("email", email)
+                        editor.putString("password", password)
+                        editor.apply()
+                    }
+
                     val user = auth.currentUser
                     if (user != null) {
                         val firestoreManager = FireStoreManager()
@@ -98,7 +124,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
-
     }
     private fun checkIfEmailExistsInFirestore(email: String) {
         val db = FirebaseFirestore.getInstance()
@@ -202,6 +227,11 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, DisplayNameActivity::class.java)
             startActivityForResult(intent, REQUEST_DISPLAY_NAME)
         }
+    }
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 

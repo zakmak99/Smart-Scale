@@ -18,15 +18,18 @@
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/Theme.SmartScaleApp" />
         <activity
-            android:name=".DashboardActivity"
+            android:name=".SignOutActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".DisplayNameActivity"
+            android:label="DisplayNameActivityLabel">
+        </activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".SignupActivity"
@@ -37,7 +40,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
