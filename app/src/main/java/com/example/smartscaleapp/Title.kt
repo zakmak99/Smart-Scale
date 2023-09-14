@@ -16,12 +16,6 @@ class Title : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_title, container, false)
-        val signOutButton = view.findViewById<Button>(R.id.signOutButton)
-
-        signOutButton.setOnClickListener {
-            val intent = Intent(activity, SignOutActivity::class.java)
-            startActivity(intent)
-        }
 
         return view
 

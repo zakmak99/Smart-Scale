@@ -1,62 +1,57 @@
-package com.example.smartscaleapp
-
+import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
-import com.google.android.material.button.MaterialButton
+import com.example.smartscaleapp.LoginActivity
+import com.example.smartscaleapp.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 
-
-class Settings : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+class Settings : PreferenceFragmentCompat(){
+    private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
-        val context = preferenceManager.context
-        val screen = preferenceManager.createPreferenceScreen(context)
+        auth = FirebaseAuth.getInstance()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
 
-        val darkmodePreference = SwitchPreferenceCompat(context)
-        darkmodePreference.key = "Dark Mode"
-        darkmodePreference.title = "Enable Dark Mode"
-        /*val button = findPreference(getString(R.string.signOut));
-        button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                //code for what you want it to do
-                return true;
-            }*/
+        val signOutPreference = findPreference<Preference>("pref_sign_out")
+        signOutPreference?.setOnPreferenceClickListener {
+            FirebaseAuth.getInstance().signOut()
 
-        screen.addPreference(darkmodePreference)
-        preferenceScreen = screen
+            googleSignInClient.signOut()
 
-    }
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
 
-    override fun onResume() {
-        super.onResume()
-        preferenceManager.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        preferenceManager.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == "Dark Mode") {
-            if (sharedPreferences?.getBoolean(key, true) == true) {
+            true
+        }
+        val darkModePreference = findPreference<SwitchPreferenceCompat>("dark_mode_preference")
+        darkModePreference?.setOnPreferenceChangeListener { _, newValue ->
+            val sharedPreferences = requireContext().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("dark_mode", newValue as Boolean)
+            editor.apply()
+            if (newValue) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
-                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-        }
 
+            true
+        }
     }
+
+
 }
