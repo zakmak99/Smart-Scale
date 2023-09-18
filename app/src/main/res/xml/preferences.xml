@@ -9,4 +9,5 @@
         android:key="pref_sign_out"
         android:title="Sign Out"
         android:summary="Log out of Google and Firebase" />
+
 </PreferenceScreen>
