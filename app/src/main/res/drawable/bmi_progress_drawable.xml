@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Underweight section -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#E0E0E0" />
+        </shape>
+    </item>
+    <!-- Normal Weight section -->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <solid android:color="#99CC00" />
+            </shape>
+        </clip>
+    </item>
+    <!-- Overweight section -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#FFBB33" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>
