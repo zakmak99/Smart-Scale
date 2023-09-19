@@ -18,22 +18,85 @@ class DietPlanGain : AppCompatActivity(){
 
         val foodItemList = mutableListOf<FoodItem>()
 
-        if (mealsPerDay != null) {
-            when {
-                mealsPerDay.toInt() == 1 -> {
-                    foodItemList.add(FoodItem("Philly Cheesesteak", 900, 50.0))
-                }
-                mealsPerDay.toInt() == 2 -> {
-                    foodItemList.add(FoodItem("Meal 1", 500, 30.0))
-                    foodItemList.add(FoodItem("Meal 2", 600, 40.0))
-                }
-                mealsPerDay.toInt() >= 3 -> {
-                    foodItemList.add(FoodItem("Meal 1", 500, 30.0))
-                    foodItemList.add(FoodItem("Meal 2", 600, 40.0))
-                    foodItemList.add(FoodItem("Meal 3", 450, 25.0))
-                }
-                else -> {
+        if (mealsPerDay != null && age != null) {
 
+            val ageInt = age.toIntOrNull()
+
+            if (ageInt != null) {
+                when (ageInt) {
+                    in 0 until 18 -> {
+                        when {
+                            mealsPerDay.toInt() == 1 -> {
+                                // Add meals for ages under 18 with 1 meal per day
+                                foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
+                            }
+
+                            mealsPerDay.toInt() == 2 -> {
+                                // Add meals for ages under 18 with 2 meal per day
+                                foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
+                                foodItemList.add(FoodItem("Kid's Meal", 400, 20.0))
+                            }
+
+                            mealsPerDay.toInt() >= 3 -> {
+                                // Add meals for ages under 18 with 3 meal per day
+                                foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
+                                foodItemList.add(FoodItem("Kid's Meal", 400, 20.0))
+                                foodItemList.add(FoodItem("Kid's Meal", 350, 18.0))
+                            }
+
+                            else -> {
+                                // Handle other cases
+                            }
+                        }
+                    }
+
+                    in 18..40 -> {
+                        when {
+                            mealsPerDay.toInt() == 1 -> {
+                                // Add meals for ages 18-40
+                                foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
+                            }
+
+                            mealsPerDay.toInt() == 2 -> {
+                                // Add meals for ages 18-40
+                                foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
+                                foodItemList.add(FoodItem("Adult Meal", 600, 30.0))
+                            }
+
+                            mealsPerDay.toInt() >= 3 -> {
+                                // Add meals for ages 18-40
+                                foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
+                                foodItemList.add(FoodItem("Adult Meal", 600, 30.0))
+                                foodItemList.add(FoodItem("Adult Meal", 550, 27.5))
+                            }
+
+                            else -> {
+                                // Handle other cases
+                            }
+                        }
+                    }
+
+                    else -> {
+                        when {
+                            mealsPerDay.toInt() == 1 -> {
+                                /// Add meals for ages over 40
+                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                            }
+
+                            mealsPerDay.toInt() == 2 -> {
+                                // Add meals for ages over 40
+                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                foodItemList.add(FoodItem("Senior Meal", 450, 22.5))
+                            }
+
+                            mealsPerDay.toInt() >= 3 -> {
+                                // Add meals for ages over 40
+                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                foodItemList.add(FoodItem("Senior Meal", 450, 22.5))
+                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                            }
+                        }
+                    }
                 }
             }
         }
