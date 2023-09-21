@@ -30,9 +30,12 @@
             android:name=".StartUpDietPlan"
             android:exported="false" />
 
+        <activity android:name=".DietPlan"></activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
 
         <activity
             android:name=".LoginActivity"
