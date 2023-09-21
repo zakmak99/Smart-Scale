@@ -3,19 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bmi_calc_nav"
-    app:startDestination="@id/BMICalculator1">
-    <fragment
-        android:id="@+id/BMICalculator1"
-        android:name="com.example.smartscaleapp.BMICalculator1"
-        android:label="fragment_bmi_calculator1"
-        tools:layout="@layout/fragment_bmi_calculator1" >
-        <action
-            android:id="@+id/action_BMICalculator1_to_BMIResults1"
-            app:destination="@id/BMIResults1" />
-    </fragment>
+    app:startDestination="@id/BMIResults1">
     <fragment
         android:id="@+id/BMIResults1"
         android:name="com.example.smartscaleapp.BMIResults1"
         android:label="fragment_bmi_results1"
-        tools:layout="@layout/fragment_bmi_results1" />
+        tools:layout="@layout/fragment_bmi_results1" >
+        <action
+            android:id="@+id/action_BMIResults1_to_warning"
+            app:destination="@id/warning" />
+    </fragment>
+    <fragment
+        android:id="@+id/warning"
+        android:name="com.example.smartscaleapp.Warning"
+        android:label="fragment_warning"
+        tools:layout="@layout/fragment_warning" >
+        <action
+            android:id="@+id/action_warning_to_BMIResults1"
+            app:destination="@id/BMIResults1" />
+    </fragment>
 </navigation>

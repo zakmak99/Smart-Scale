@@ -16,6 +16,7 @@
     <string name="calculate_bmi">Calculate BMI</string>
     <string name="bmi_result">BMI Result:</string>
     <string name="signOut">Sign Out</string>
+    <string name="warningProfile">Please finish setting up profile to use this feature</string>
     <string-array name="activity_levels">
         <item>Sedentary</item>
         <item>Lightly Active</item>
@@ -51,5 +52,7 @@
     <string name="cd_settings">Content Description for Settings</string>
     <string name="title_settings">Settings</string>
     <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

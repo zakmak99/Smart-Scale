@@ -79,7 +79,7 @@ class BMICalculator1 : Fragment() {
 
 
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, bmiResultsFragment)
+        transaction.replace(R.id.nav_host_fragment, bmiResultsFragment)
         transaction.addToBackStack(null)  // Optional: This allows the user to go back to the calculator
         transaction.commit()
 

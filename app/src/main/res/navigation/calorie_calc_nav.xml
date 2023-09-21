@@ -3,20 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/calorie_calc_nav"
-    app:startDestination="@id/caloriesCalculator1">
+    app:startDestination="@id/caloriesCalcResult1">
 
-    <fragment
-        android:id="@+id/caloriesCalculator1"
-        android:name="com.example.smartscaleapp.CaloriesCalculator1"
-        android:label="fragment_calories_calculator1"
-        tools:layout="@layout/fragment_calories_calculator1" >
-        <action
-            android:id="@+id/action_caloriesCalculator1_to_caloriesCalcResult1"
-            app:destination="@id/caloriesCalcResult1" />
-    </fragment>
     <fragment
         android:id="@+id/caloriesCalcResult1"
         android:name="com.example.smartscaleapp.CaloriesCalcResult1"
         android:label="fragment_calories_calc_result1"
-        tools:layout="@layout/fragment_calories_calc_result1" />
+        tools:layout="@layout/fragment_calories_calc_result1" >
+        <action
+            android:id="@+id/action_caloriesCalcResult1_to_warning2"
+            app:destination="@id/warning2" />
+    </fragment>
+    <fragment
+        android:id="@+id/warning2"
+        android:name="com.example.smartscaleapp.Warning"
+        android:label="fragment_warning"
+        tools:layout="@layout/fragment_warning" >
+        <action
+            android:id="@+id/action_warning2_to_caloriesCalcResult1"
+            app:destination="@id/caloriesCalcResult1" />
+    </fragment>
 </navigation>

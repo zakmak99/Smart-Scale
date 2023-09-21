@@ -9,5 +9,18 @@
         android:id="@+id/title2"
         android:name="com.example.smartscaleapp.Title"
         android:label="fragment_title"
-        tools:layout="@layout/fragment_title" />
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_title2_to_caloriesCalculator1"
+            app:destination="@id/caloriesCalculator1" />
+    </fragment>
+    <fragment
+        android:id="@+id/caloriesCalculator1"
+        android:name="com.example.smartscaleapp.CaloriesCalculator1"
+        android:label="fragment_calories_calculator1"
+        tools:layout="@layout/fragment_calories_calculator1" >
+        <action
+            android:id="@+id/action_caloriesCalculator1_to_title2"
+            app:destination="@id/title2" />
+    </fragment>
 </navigation>

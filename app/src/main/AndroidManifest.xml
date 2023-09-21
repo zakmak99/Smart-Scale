@@ -17,9 +17,6 @@
             android:exported="false"
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/Theme.SmartScaleApp" />
-        <activity
-            android:name=".DashboardActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"

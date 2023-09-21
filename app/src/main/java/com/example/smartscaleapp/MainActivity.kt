@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             .setupWithNavController(navController)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.title2, R.id.BMICalculator1,  R.id.caloriesCalculator1, R.id.dietPlan1, R.id.settings2)
+            setOf(R.id.title2, R.id.BMIResults1,  R.id.caloriesCalcResult1, R.id.dietPlan1, R.id.settings2)
         )
         /*setupActionBarWithNavController(navController, appBarConfiguration)*/
     }

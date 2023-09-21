@@ -51,6 +51,14 @@ class Settings : PreferenceFragmentCompat(){
 
             true
         }
+        val eraseData = findPreference<Preference>("pref_data_wipe")
+        eraseData?.setOnPreferenceClickListener {
+            val sharedPreferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.clear()
+            editor.apply()
+            true
+        }
     }
 
 

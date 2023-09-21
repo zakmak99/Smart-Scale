@@ -6,8 +6,13 @@
         android:key="dark_mode_preference"
         android:title="Dark Mode" />
     <Preference
+        android:key="pref_data_wipe"
+        android:title="Clear User Data"
+        android:summary="Wipes saved user data"/>
+    <Preference
         android:key="pref_sign_out"
         android:title="Sign Out"
         android:summary="Log out of Google and Firebase" />
+
 
 </PreferenceScreen>

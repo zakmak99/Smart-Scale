@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="515dp"
+        android:layout_height="821dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/emailEditText"
@@ -12,6 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="284dp"
         android:hint="Email"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.5"
+        android:shadowRadius="1.5"
+        android:textColorHint="@color/white"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -24,6 +40,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.5"
+        android:shadowRadius="1.5"
+        android:textColorHint="@color/white"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@+id/emailEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +105,7 @@
         android:text="Sign In"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:backgroundTint="@color/black"
+        app:backgroundTint="#817C7C"
         app:icon="@drawable/googlelogo"
         app:iconGravity="start"
         app:iconPadding="4dp"
@@ -101,22 +121,14 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="104dp"
         android:text="Smart Scale"
-        android:textSize="35sp"
+        android:textColor="#0FE1FF"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="155dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
