@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/diet_plan_nav"
-    app:startDestination="@id/dietPlan1">
+    app:startDestination="@id/startUpDietPLan1">
 
     <fragment
         android:id="@+id/dietPlan1"
@@ -27,4 +27,16 @@
         android:name="com.example.smartscaleapp.DietPlanLose1"
         android:label="fragment_diet_plan_lose1"
         tools:layout="@layout/fragment_diet_plan_lose1" />
+
+    <fragment
+        android:id="@+id/startUpDietPLan1"
+        android:name="com.example.smartscaleapp.StartUpDietPlan1"
+        android:label="fragment_start_up_diet_plan1"
+        tools:layout="@layout/fragment_start_up_diet_plan1" >
+        <action
+            android:id="@+id/action_startUpDietPLan1_to_dietPlan1"
+            app:destination="@id/dietPlan1" />
+    </fragment>
+
+
 </navigation>
