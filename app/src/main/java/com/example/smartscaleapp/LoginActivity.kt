@@ -146,7 +146,9 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 } else {
                     // Email doesn't exist in Firestore; show display name prompt
-                    showDisplayNamePrompt()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             } else {
                 Toast.makeText(this, "Error checking email in Firestore", Toast.LENGTH_SHORT).show()

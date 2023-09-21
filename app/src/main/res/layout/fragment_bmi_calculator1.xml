@@ -64,15 +64,15 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="112dp"
-        android:layout_height="75dp"
+        android:layout_width="145dp"
+        android:layout_height="91dp"
         android:layout_marginTop="28dp"
         android:contentDescription="@string/company_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo_removebg" />
 
     <TextView
         android:id="@+id/textView2"
