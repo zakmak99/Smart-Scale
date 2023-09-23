@@ -15,5 +15,11 @@ class StartUpDietPlan : AppCompatActivity() {
             val Intent = Intent(this, DietPlan::class.java)
             startActivity(Intent)
         }
+
+        val allMealsButton = findViewById<Button>(R.id.buttonMeals)
+        allMealsButton.setOnClickListener {
+            val Intent = Intent(this, EveryMeal::class.java)
+            startActivity(Intent)
+        }
     }
 }

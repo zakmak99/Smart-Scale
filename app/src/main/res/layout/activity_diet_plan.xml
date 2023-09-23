@@ -25,24 +25,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/activityLevelEditText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Enter your activity level (low/medium/high)"
-        app:layout_constraintTop_toBottomOf="@+id/goalEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/mealsPerDayEditText"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="Enter number of meals per day"
-        app:layout_constraintTop_toBottomOf="@+id/activityLevelEditText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="number" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalEditText" />
+
+    <Spinner
+        android:id="@+id/activityLevelSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Select your activity level"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mealsPerDayEditText" />
 
     <Button
         android:id="@+id/submitButton"

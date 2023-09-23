@@ -28,20 +28,20 @@ class DietPlanGain : AppCompatActivity(){
                         when {
                             mealsPerDay.toInt() == 1 -> {
                                 // Add meals for ages under 18 with 1 meal per day
-                                foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
+                                foodItemList.add(FoodItem("Seared Salmon with Charred Green Beans", 488, 31.0))
                             }
 
                             mealsPerDay.toInt() == 2 -> {
                                 // Add meals for ages under 18 with 2 meal per day
-                                foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
-                                foodItemList.add(FoodItem("Kid's Meal", 400, 20.0))
+                                foodItemList.add(FoodItem("Seared Salmon with Charred Green Beans", 488, 31.0))
+                                foodItemList.add(FoodItem("Air Fryer Squash Soup", 487, 24.1))
                             }
 
                             mealsPerDay.toInt() >= 3 -> {
                                 // Add meals for ages under 18 with 3 meal per day
-                                foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
-                                foodItemList.add(FoodItem("Kid's Meal", 400, 20.0))
-                                foodItemList.add(FoodItem("Kid's Meal", 350, 18.0))
+                                foodItemList.add(FoodItem("Seared Salmon with Charred Green Beans", 488, 31.0))
+                                foodItemList.add(FoodItem("Air Fryer Squash Soup", 487, 24.1))
+                                foodItemList.add(FoodItem("Sheet Pan Fish and Vegetables", 487, 24.1))
                             }
 
                             else -> {
@@ -54,20 +54,20 @@ class DietPlanGain : AppCompatActivity(){
                         when {
                             mealsPerDay.toInt() == 1 -> {
                                 // Add meals for ages 18-40
-                                foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
+                                foodItemList.add(FoodItem("Garam Masala Roasted Chicken and Cauliflower", 420, 30.0))
                             }
 
                             mealsPerDay.toInt() == 2 -> {
                                 // Add meals for ages 18-40
-                                foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
-                                foodItemList.add(FoodItem("Adult Meal", 600, 30.0))
+                                foodItemList.add(FoodItem("Grilled Steak Tortilla Salad", 480, 28.0))
+                                foodItemList.add(FoodItem("Roasted Cauliflower Pizza", 420, 24.0))
                             }
 
                             mealsPerDay.toInt() >= 3 -> {
                                 // Add meals for ages 18-40
-                                foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
-                                foodItemList.add(FoodItem("Adult Meal", 600, 30.0))
-                                foodItemList.add(FoodItem("Adult Meal", 550, 27.5))
+                                foodItemList.add(FoodItem("Garam Masala Roasted Chicken and Cauliflower", 420, 30.0))
+                                foodItemList.add(FoodItem("Grilled Steak Tortilla Salad", 480, 28.0))
+                                foodItemList.add(FoodItem("Roasted Cauliflower Pizza", 420, 24.0))
                             }
 
                             else -> {
@@ -80,20 +80,20 @@ class DietPlanGain : AppCompatActivity(){
                         when {
                             mealsPerDay.toInt() == 1 -> {
                                 /// Add meals for ages over 40
-                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                foodItemList.add(FoodItem("Korean Pineapple Beef Lettuce Wraps", 488, 31.0))
                             }
 
                             mealsPerDay.toInt() == 2 -> {
                                 // Add meals for ages over 40
-                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
-                                foodItemList.add(FoodItem("Senior Meal", 450, 22.5))
-                            }
+                                foodItemList.add(FoodItem("Korean Pineapple Beef Lettuce Wraps", 488, 31.0))
+                                foodItemList.add(FoodItem("Traditional Chicken Curry", 487, 24.1))
+                        }
 
                             mealsPerDay.toInt() >= 3 -> {
                                 // Add meals for ages over 40
-                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
-                                foodItemList.add(FoodItem("Senior Meal", 450, 22.5))
-                                foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                foodItemList.add(FoodItem("Korean Pineapple Beef Lettuce Wraps", 488, 31.0))
+                                foodItemList.add(FoodItem("Traditional Chicken Curry", 487, 24.1))
+                                foodItemList.add(FoodItem("Paprika Chicken with Crispy Chickpeas and Tomatoes", 488, 31.0))
                             }
                         }
                     }
