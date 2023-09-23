@@ -6,26 +6,84 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DietPlanGain1.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DietPlanGain1 : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            val age = it.getString("age")
+            val activityLevel = it.getString("activityLevel")
+            val mealsPerDay = it.getString("mealsPerDay")
+
+            val foodItemList = mutableListOf<FoodItem>()
+
+            if (mealsPerDay != null && age != null) {
+
+                val ageInt = age.toIntOrNull()
+
+                if (ageInt != null) {
+                    when (ageInt) {
+                        in 0 until 18 -> {
+                            when {
+                                mealsPerDay.toInt() == 1 -> {
+                                    foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
+                                }
+
+                                mealsPerDay.toInt() == 2 -> {
+                                    foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
+                                    foodItemList.add(FoodItem("Kid's Meal", 400, 20.0))
+                                }
+
+                                mealsPerDay.toInt() >= 3 -> {
+                                    foodItemList.add(FoodItem("Kid's Meal", 300, 15.0))
+                                    foodItemList.add(FoodItem("Kid's Meal", 400, 20.0))
+                                    foodItemList.add(FoodItem("Kid's Meal", 350, 18.0))
+                                }
+                            }
+                        }
+
+                        in 18..40 -> {
+                            when {
+                                mealsPerDay.toInt() == 1 -> {
+                                    foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
+                                }
+
+                                mealsPerDay.toInt() == 2 -> {
+                                    foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
+                                    foodItemList.add(FoodItem("Adult Meal", 600, 30.0))
+                                }
+
+                                mealsPerDay.toInt() >= 3 -> {
+                                    foodItemList.add(FoodItem("Adult Meal", 500, 25.0))
+                                    foodItemList.add(FoodItem("Adult Meal", 600, 30.0))
+                                    foodItemList.add(FoodItem("Adult Meal", 550, 27.5))
+                                }
+                            }
+                        }
+
+                        else -> {
+                            when {
+                                mealsPerDay.toInt() == 1 -> {
+                                    foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                }
+
+                                mealsPerDay.toInt() == 2 -> {
+                                    foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                    foodItemList.add(FoodItem("Senior Meal", 450, 22.5))
+                                }
+
+                                mealsPerDay.toInt() >= 3 -> {
+                                    foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                    foodItemList.add(FoodItem("Senior Meal", 450, 22.5))
+                                    foodItemList.add(FoodItem("Senior Meal", 400, 20.0))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Now you have the foodItemList ready for use
         }
     }
 
@@ -33,27 +91,6 @@ class DietPlanGain1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_diet_plan_gain1, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DietPlanGain1.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DietPlanGain1().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

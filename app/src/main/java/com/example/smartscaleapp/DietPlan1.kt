@@ -1,17 +1,17 @@
 package com.example.smartscaleapp
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.fragment.findNavController
 import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Intent
-import androidx.recyclerview.widget.LinearLayoutManager
 
 
 class DietPlan1 : Fragment() {
@@ -49,7 +49,7 @@ class DietPlan1 : Fragment() {
             val intent = Intent(requireActivity(), when {
                 goal.equals("gain", ignoreCase = true) -> DietPlanGain::class.java
                 goal.equals("lose", ignoreCase = true) -> DietPlanLose::class.java
-                else -> return@setOnClickListener
+                else -> null
             })
 
             intent.apply {
@@ -62,7 +62,18 @@ class DietPlan1 : Fragment() {
                 // Shows an error message to the user
                 Toast.makeText(requireContext(), "Please fill in your info.", Toast.LENGTH_SHORT).show()
             } else {
-                startActivity(intent)
+                val intent = when {
+                    goal.equals("gain", ignoreCase = true) -> Intent(requireActivity(), DietPlanGain::class.java)
+                    goal.equals("lose", ignoreCase = true) -> Intent(requireActivity(), DietPlanLose::class.java)
+                    else -> null
+                }
+
+                intent?.apply {
+                    putExtra("age", age)
+                    putExtra("activityLevel", activityLevel)
+                    putExtra("mealsPerDay", mealsPerDay)
+                    startActivity(this)
+                }
             }
         }
 
