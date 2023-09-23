@@ -25,7 +25,12 @@
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".EveryMeal"
+            android:exported="false" />
+        <activity
+            android:name=".DietPlan"
+            android:exported="false" />
         <activity
             android:name=".StartUpDietPlan"
             android:exported="false" />
