@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_dietPlan1_to_dietPlanLose1"
             app:destination="@id/dietPlanLose1" />
+        <action
+            android:id="@+id/action_dietPlan1_to_dietPlanGain12"
+            app:destination="@id/dietPlanGain1" />
+        <action
+            android:id="@+id/action_dietPlan1_to_dietPlanLose12"
+            app:destination="@id/dietPlanLose1" />
     </fragment>
     <fragment
         android:id="@+id/dietPlanGain1"

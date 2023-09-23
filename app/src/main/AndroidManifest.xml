@@ -38,6 +38,16 @@
         <activity android:name=".DietPlan"></activity>
 
         <activity
+            android:name=".DietPlanGain"
+            android:label="Diet Plan Gain">
+        </activity>
+
+        <activity
+            android:name=".DietPlanLose"
+            android:label="Diet Plan lose">
+        </activity>
+
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
 

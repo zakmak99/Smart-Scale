@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo_removebg" />
 
     <EditText
         android:id="@+id/emailEditText"
