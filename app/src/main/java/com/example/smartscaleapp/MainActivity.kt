@@ -48,11 +48,7 @@ class MainActivity : AppCompatActivity() {
             setOf(R.id.title2, R.id.BMIResults1,  R.id.caloriesCalcResult1, R.id.dietPlan1, R.id.settings2)
         )
         /*setupActionBarWithNavController(navController, appBarConfiguration)*/
-        val dietPlanButton = findViewById<Button>(R.id.buttonDietPlan)
-        dietPlanButton.setOnClickListener {
-            val Intent = Intent(this, StartUpDietPlan::class.java)
-            startActivity(Intent)
-        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
